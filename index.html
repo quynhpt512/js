@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>siblings demo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="container">
+	<ul>
+		<li><a href="practices1-tab.html" title="">Tab</a></li>
+		<li><a href="practices2-dropdown.html" title="">Dropdown</a></li>
+		<li><a href="practices3-slider.html" title="">Slider</a></li>
+		<li><a href="practices4-login.html" title="">Login</a></li>
+	</ul>		
+</div>
+	 
+<script>
+	$( document ).on( "click", ".tab-heading li", function(e) {
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		$(".tab-content").removeClass("active");
+		$($(this).find("a").attr("href")).addClass("active");
+		e.preventDefault();
+	});
+</script>
+ 
+</body>
+</html>
