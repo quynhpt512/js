@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>siblings demo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="slideshow">
+		<div class="slide">
+			<div class="item"><img src="images/slide/1.jpg" alt="" /></div>
+			<div class="item"><img src="images/slide/2.jpg" alt="" /></div>
+			<div class="item"><img src="images/slide/3.jpg" alt="" /></div>
+		</div>
+		<div class="slide-control">
+			<div class="page">
+				<div class="page-item"><a href="#" data-id="0">1</a></div>
+				<div class="page-item"><a href="#" data-id="1">2</a></div>
+				<div class="page-item"><a href="#" data-id="2">3</a></div>
+			</div>
+			<div class="nav">
+				<a class="btn-prev" href="#">Prev</a>
+				<a class="btn-next" href="#">Next</a>
+			</div>
+		</div>
+	</div>
+</div>
+	 
+<script>
+	$( ".slide .item" ).first().addClass("active");
+	$( ".page div" ).first().addClass("active")
+	$( document ).on( "click", ".slideshow .btn-next", function(e) {
+		if ($( ".slide .active" ).next().length > 0) {
+			$( ".slide .active" ).next().addClass("active");
+			$( ".slide .active" ).prev().removeClass("active");
+			$( ".page .active" ).next().addClass("active");
+			$( ".page .active" ).prev().removeClass("active");
+			
+		} else {
+			$( ".slide .item" ).removeClass("active");
+			$( ".slide .item" ).first().addClass("active");			
+			$( ".page .page-item" ).removeClass("active");
+			$( ".page .page-item" ).first().addClass("active");
+		}
+		e.preventDefault();
+	});
+	$( document ).on( "click", ".slideshow .btn-prev", function(e) {
+		if ($( ".slide .active" ).prev().length > 0) {
+			$( ".slide .active" ).prev().addClass("active");
+			$( ".slide .active" ).next().removeClass("active");
+			$( ".page .active" ).prev().addClass("active");
+			$( ".page .active" ).next().removeClass("active");
+		} else {
+			$( ".slide .item" ).removeClass("active");
+			$( ".slide .item" ).last().addClass("active");
+			$( ".page .page-item" ).removeClass("active");
+			$( ".page .page-item" ).last().addClass("active");
+		}
+		e.preventDefault();
+	});	
+	$( document ).on( "click", ".page a", function(e) {
+		$( ".slide .item" ).removeClass("active");
+		$( ".page .page-item" ).removeClass("active");
+		$(this).parent().addClass("active");
+		$( ".slide .item:eq( "+$(this).data("id")+" )" ).addClass("active");
+		e.preventDefault();
+	});	
+	setInterval(function () {
+		$('.slideshow .btn-next').click();
+	}, 3000);
+	
+</script>
+ 
+</body>
+</html>

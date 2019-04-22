@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>siblings demo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="tab">
+		<ul class="tab-heading">
+			<li class="active"><a href="#tab1" title="">Strong</a></li>
+			<li><a href="#tab2" title="">Section</a></li>
+			<li><a href="#tab3" title="">Soure</a></li>
+		</ul>
+		<div class="c-tab">
+			<div id="tab1" class="tab-content active">
+				<h2>Content tab 1</h2>
+				<p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+			</div>
+			<div id="tab2" class="tab-content">
+				<h2>Content tab 2</h2>
+				<p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.<br />
+				Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+			</div>
+			<div id="tab3" class="tab-content">
+				<h2>Content tab 3</h2>
+				<p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.<br />
+				Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.<br />
+				Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+			</div>
+		</div>
+	</div>
+</div>
+	 
+<script>
+	$( document ).on( "click", ".tab-heading li", function(e) {
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		$(".tab-content").removeClass("active");
+		$($(this).find("a").attr("href")).addClass("active");
+		e.preventDefault();
+	});
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>siblings demo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="dropdown">
+		<a class="avata" href="#" title=""><img src="images/avata.png" alt="" /></a>
+		<div class="c-dropdown">
+			<div class="profile">
+				<h2>Wellcome: Quynh Pham</h2>
+				<p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+			</div>
+		</div>
+	</div>
+</div>
+	 
+<script>
+	$( document ).on( "click", ".dropdown .avata", function(e) {
+		$(this).parent().toggleClass("open");
+		e.preventDefault();
+	});
+		
+	$(document).click(function (e){
+		var container = $(".dropdown .avata");
+		var container1 = $(".c-dropdown");
+		if (!container.is(e.target) && container.has(e.target).length === 0 && !container1.is(e.target) && container1.has(e.target).length === 0) {
+			$('.dropdown').removeClass("open");
+		}
+    });
+</script>
+ 
+</body>
+</html>
